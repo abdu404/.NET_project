@@ -1,0 +1,23 @@
+﻿ ﻿@using Microsoft.AspNetCore.Identity
+
+ @model ContactManager.ViewModels.SettingVM
+ @inject UserManager<AppUser> userManager
+
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<h1 class="text-center">Welcome, @Model.Name</h1>
+<div class="text-center">
+    <img class="rounded-circle img-fluid" src="@Url.Action("GetProfilePicture", "Account", new { userId = userManager.GetUserId(User) })" alt="Profile Picture" style="height: 100px; width: 100px;" />
+</div>
+<div class="row text-center mt-5 gap-5 justify-content-center">
+    <div class="col-sm-6 col-12 border border-light-subtle p-5">
+        <h3>Your Information</h3>
+        <p><strong>Email:</strong> @Model.EmailAddress</p>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <a type="button" class="btn btn-primary mt-3" asp-area="" asp-controller="AppUser" asp-action="Settings">Edit</a>
+    </div>
+</div>
+
+
